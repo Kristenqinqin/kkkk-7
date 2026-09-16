@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#03030a" />
+  <meta name="description" content="用双手操控星尘，亲手创造一座梦幻粒子生日蛋糕。" />
+  <title>Make a Wish — Interactive Particle Art</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='17' fill='%2303030a'/%3E%3Cpath d='M32 6c8 9 7 17 0 22-8-5-8-13 0-22z' fill='%23fff1c7'/%3E%3Cpath d='M14 37c8-8 29-8 36 0v15H14z' fill='%23dcc6ff'/%3E%3Ccircle cx='18' cy='29' r='2' fill='%239edcff'/%3E%3Ccircle cx='49' cy='22' r='1.5' fill='%23f8d7e8'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main id="experience" data-stage="welcome" aria-label="手势控制的粒子生日艺术装置">
+    <canvas id="scene" aria-label="可通过手势或鼠标操控的三维粒子世界"></canvas>
+    <video id="camera" playsinline muted aria-hidden="true"></video>
+    <div class="veil"></div><div class="grain"></div><div id="flash" class="flash"></div>
+    <header class="masthead">
+      <div class="mark"><i>✦</i><span>CELESTIAL PATISSERIE</span></div>
+      <div id="trackingState" class="tracking"><i></i><span>Waiting for your hand</span></div>
+    </header>
+    <section id="welcome" class="welcome panel" aria-live="polite">
+      <div class="orb-mark"><span></span><i>✦</i></div>
+      <p class="kicker">AN INTERACTIVE PARTICLE RITUAL</p>
+      <h1>Hold out your hand <em>✦</em></h1>
+      <p class="lede">Allow camera access to touch the particles.<br>Your image is never shown or recorded.</p>
+      <div class="entry-actions">
+        <button id="cameraBtn" class="luminous" type="button"><span>Use hand gestures</span><i>↗</i></button>
+        <button id="mouseBtn" class="quiet" type="button">Continue with mouse</button>
+      </div>
+    </section>
+    <section id="guide" class="guide" aria-live="assertive">
+      <p class="kicker">YOUR HAND IS THE GRAVITY</p>
+      <h2 id="guideTitle">Open your hand</h2>
+      <p id="guideCopy">Let the stardust breathe into the dark.</p>
+      <div class="gesture-meter"><span id="gestureFill"></span></div>
+    </section>
+    <section id="wishCopy" class="wish-copy" aria-live="assertive">
+      <p class="kicker">A QUIET MOMENT</p>
+      <h2 id="wishTitle">Make a wish.</h2>
+      <p id="wishHint">Take a breath, then blow softly.</p>
+    </section>
+    <section id="finalCopy" class="final-copy" aria-live="assertive">
+      <p class="kicker">WRITTEN IN THE STARS</p>
+      <h2>May all your wishes<br>come true.</h2>
+    </section>
+    <aside id="legend" class="legend" aria-label="手势操作说明">
+      <div><span class="gesture-icon open"></span><p><b>OPEN</b>Release the universe</p></div>
+      <div><span class="gesture-icon fist"></span><p><b>CLOSE</b>Create the cake</p></div>
+      <div><span class="gesture-icon pinch"></span><p><b>PINCH</b>Gather stardust</p></div>
+    </aside>
+    <nav class="controls" aria-label="体验控制">
+      <button id="wishBtn" class="primary" type="button" disabled><i>✦</i><span>Make a Wish</span></button>
+      <button id="lightBtn" type="button" aria-label="点亮蜡烛"><i>⌁</i><span>Light candles</span></button>
+      <button id="replayBtn" type="button" aria-label="重新开始"><i>↻</i></button>
+      <button id="soundBtn" type="button" aria-pressed="false" aria-label="打开声音"><i>♫</i></button>
+    </nav>
+    <p id="mouseTip" class="mouse-tip">MOVE · STIR PARTICLES &nbsp;&nbsp; HOLD · GATHER &nbsp;&nbsp; SCROLL · OPEN / CLOSE</p>
+    <div class="corner a">✦</div><div class="corner b">✦</div>
+  </main>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/","@mediapipe/tasks-vision":"https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/vision_bundle.mjs"}}</script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
